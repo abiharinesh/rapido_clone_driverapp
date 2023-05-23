@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "858012414157",
+    "firebase_url": "https://rapido-clone-b05ba-default-rtdb.firebaseio.com",
+    "project_id": "rapido-clone-b05ba",
+    "storage_bucket": "rapido-clone-b05ba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:858012414157:android:3989d118b3f63aee92f984",
+        "android_client_info": {
+          "package_name": "com.abiharinesh.driversapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "858012414157-90dj4k11hul3h60vhitpprupaqu8t6k5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2PHdV2x6QBUj3V8F2crWFAcDsFYkaMjk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "858012414157-90dj4k11hul3h60vhitpprupaqu8t6k5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:858012414157:android:5ea27546d539380f92f984",
+        "android_client_info": {
+          "package_name": "com.abiharinesh.usersapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "858012414157-90dj4k11hul3h60vhitpprupaqu8t6k5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2PHdV2x6QBUj3V8F2crWFAcDsFYkaMjk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "858012414157-90dj4k11hul3h60vhitpprupaqu8t6k5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
