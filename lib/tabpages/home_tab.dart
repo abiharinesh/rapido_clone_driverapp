@@ -1,6 +1,9 @@
 import 'dart:async';
 
+import 'package:drivers_app/assistants/assistant_methods.dart';
+import 'package:drivers_app/global/global.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 
@@ -23,6 +26,12 @@ class _HomeTabPageState extends State<HomeTabPage>
     zoom: 14.4746,
   );
 
+   //geolocator has default function called position we can get user location from it.. 
+   Position? userCurrentPosition;
+   //geolocator has default function called geolocator that gets the users location..
+   var geolocator = Geolocator();
+
+   LocationPermission? _locationPermission;
 
   blackThemeGoogleMap()
   {
@@ -191,6 +200,42 @@ class _HomeTabPageState extends State<HomeTabPage>
                 ''');
   }
 
+    //request location permission
+  checkIfLocationPermissionAllowed() async
+  {
+    _locationPermission = await Geolocator.requestPermission();
+
+    if(_locationPermission == LocationPermission.denied)
+      {
+        _locationPermission = await Geolocator.requestPermission();
+      }
+  }
+
+  // current user position
+  locateDriverPosition() async
+  {
+      //getting user location from geolocator and assigning to user current position
+      Position cPosition =  await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+      userCurrentPosition = cPosition;
+      // getting the lat and lng 
+       LatLng latLngPosition = LatLng(userCurrentPosition!.latitude, userCurrentPosition!.longitude);
+      // setting the camera position 
+       CameraPosition cameraPosition = CameraPosition(target: latLngPosition, zoom: 14);
+      //updating the camera when ever location gets changed.
+       newGoogleMapController!.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
+
+      String humanReadableAddress = await AssistantMethods.searchAddressForGeographicCoOrdinates(userCurrentPosition!,context);
+       print("this is your address="+ humanReadableAddress);
+
+      
+  } 
+
+        @override
+  void initState() {
+    super.initState();
+    checkIfLocationPermissionAllowed();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -206,6 +251,8 @@ class _HomeTabPageState extends State<HomeTabPage>
 
             //black theme google map
             blackThemeGoogleMap();
+
+            locateDriverPosition();
           },
         ),
       ],
