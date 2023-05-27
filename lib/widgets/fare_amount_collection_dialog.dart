@@ -7,7 +7,7 @@ class FareAmountCollectionDialog extends StatefulWidget
 {
   double? totalFareAmount;
 
-  FareAmountCollectionDialog({this.totalFareAmount});
+  FareAmountCollectionDialog({super.key, this.totalFareAmount});
 
   @override
   State<FareAmountCollectionDialog> createState() => _FareAmountCollectionDialogState();

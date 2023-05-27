@@ -8,6 +8,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 class CarInfoScreen extends StatefulWidget 
 
 {
+  const CarInfoScreen({super.key});
+
 
 
   @override

@@ -66,7 +66,7 @@ saveDriverInfoNow()async
         password:passwordTextEditingController.text.trim(),
       ).catchError((msg){
           Navigator.pop(context);
-          Fluttertoast.showToast(msg: "Error" + msg.toString());
+          Fluttertoast.showToast(msg: "Error$msg");
       })
     ).user;
 
@@ -86,7 +86,7 @@ saveDriverInfoNow()async
 
       currentFirebaseUser = firebaseUser;
        Fluttertoast.showToast(msg: "Account has been created");
-      Navigator.push(context, MaterialPageRoute(builder: (c)=> CarInfoScreen()));
+      Navigator.push(context, MaterialPageRoute(builder: (c)=> const CarInfoScreen()));
 
     }
     else
@@ -277,7 +277,7 @@ saveDriverInfoNow()async
                 ),
                 onPressed: ()
                 {
-                  Navigator.push(context, MaterialPageRoute(builder: (c)=> LoginScreen()));
+                  Navigator.push(context, MaterialPageRoute(builder: (c)=> const LoginScreen()));
                 },
               )
         

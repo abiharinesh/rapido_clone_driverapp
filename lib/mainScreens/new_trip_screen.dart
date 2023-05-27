@@ -18,7 +18,7 @@ class NewTripScreen extends StatefulWidget
 {
   UserRideRequestInformation? userRideRequestDetails;
 
-  NewTripScreen({
+  NewTripScreen({super.key, 
     this.userRideRequestDetails,
   });
 
@@ -42,9 +42,9 @@ class _NewTripScreenState extends State<NewTripScreen>
   String? buttonTitle = "Arrived";
   Color? buttonColor = Colors.green;
 
-  Set<Marker> setOfMarkers = Set<Marker>();
-  Set<Circle> setOfCircle = Set<Circle>();
-  Set<Polyline> setOfPolyline = Set<Polyline>();
+  Set<Marker> setOfMarkers = <Marker>{};
+  Set<Circle> setOfCircle = <Circle>{};
+  Set<Polyline> setOfPolyline = <Polyline>{};
   List<LatLng> polyLinePositionCoordinates = [];
   PolylinePoints polylinePoints = PolylinePoints();
 
@@ -89,10 +89,9 @@ class _NewTripScreenState extends State<NewTripScreen>
 
     if(decodedPolyLinePointsResultList.isNotEmpty)
     {
-      decodedPolyLinePointsResultList.forEach((PointLatLng pointLatLng)
-      {
+      for (var pointLatLng in decodedPolyLinePointsResultList) {
         polyLinePositionCoordinates.add(LatLng(pointLatLng.latitude, pointLatLng.longitude));
-      });
+      }
     }
 
     setOfPolyline.clear();
@@ -200,7 +199,7 @@ class _NewTripScreenState extends State<NewTripScreen>
 
   getDriversLocationUpdatesAtRealTime()
   {
-    LatLng oldLatLng = LatLng(0, 0);
+    LatLng oldLatLng = const LatLng(0, 0);
 
     streamSubscriptionDriverLivePosition = Geolocator.getPositionStream()
         .listen((Position position)
@@ -407,13 +406,11 @@ class _NewTripScreenState extends State<NewTripScreen>
                         ),
                         const SizedBox(width: 14,),
                         Expanded(
-                          child: Container(
-                            child: Text(
-                              widget.userRideRequestDetails!.originAddress!,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                color: Colors.grey,
-                              ),
+                          child: Text(
+                            widget.userRideRequestDetails!.originAddress!,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              color: Colors.grey,
                             ),
                           ),
                         ),
@@ -637,18 +634,18 @@ class _NewTripScreenState extends State<NewTripScreen>
     databaseReference.child("driverId").set(onlineDriverData.id);
     databaseReference.child("driverName").set(onlineDriverData.name);
     databaseReference.child("driverPhone").set(onlineDriverData.phone);
-    databaseReference.child("car_details").set(onlineDriverData.car_color.toString() + onlineDriverData.car_model.toString());
+    databaseReference.child("car_details").set("${onlineDriverData.car_color} ${onlineDriverData.car_model} ${onlineDriverData.car_number}");
     
-    saveRideRequestIdToDriverHistory();
+   // saveRideRequestIdToDriverHistory();
   }
 
-  saveRideRequestIdToDriverHistory()
-  {
-    DatabaseReference tripsHistoryRef = FirebaseDatabase.instance.ref()
-                                        .child("drivers")
-                                        .child(currentFirebaseUser!.uid)
-                                        .child("tripsHistory");
+  // saveRideRequestIdToDriverHistory()
+  // {
+  //   DatabaseReference tripsHistoryRef = FirebaseDatabase.instance.ref()
+  //                                       .child("drivers")
+  //                                       .child(currentFirebaseUser!.uid)
+  //                                       .child("tripsHistory");
 
-    tripsHistoryRef.child(widget.userRideRequestDetails!.rideRequestId!).set(true);
-  }
+  //   tripsHistoryRef.child(widget.userRideRequestDetails!.rideRequestId!).set(true);
+  // }
 }

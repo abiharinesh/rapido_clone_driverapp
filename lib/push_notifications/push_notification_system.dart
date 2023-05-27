@@ -100,8 +100,6 @@ class PushNotificationSystem
   Future generateAndGetToken() async
   {
     String? registrationToken = await messaging.getToken();
-    print("FCM Registration Token: ");
-    print(registrationToken);
 
     FirebaseDatabase.instance.ref()
         .child("drivers")

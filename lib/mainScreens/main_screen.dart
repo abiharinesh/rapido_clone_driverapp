@@ -45,7 +45,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
       children: const [
         HomeTabPage(),
         EarningsTabPage(),
-        RatingTabPage(),
+        RatingsTabPage(),
         ProfileTabPage(),
       ],
      ),

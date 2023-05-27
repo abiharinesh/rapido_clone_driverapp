@@ -10,6 +10,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginScreen extends StatefulWidget
 {
+  const LoginScreen({super.key});
+
 
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -57,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen>
           password: passwordTextEditingController.text.trim(),
         ).catchError((msg){
           Navigator.pop(context);
-          Fluttertoast.showToast(msg: "Error: " + msg.toString());
+          Fluttertoast.showToast(msg: "Error: $msg");
         })
     ).user;
 
@@ -177,7 +179,7 @@ class _LoginScreenState extends State<LoginScreen>
                   validateForm();
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.lightGreenAccent,
+                  backgroundColor: Colors.lightGreenAccent,
                 ),
                 child: const Text(
                   "Login",
@@ -195,7 +197,7 @@ class _LoginScreenState extends State<LoginScreen>
                 ),
                 onPressed: ()
                 {
-                  Navigator.push(context, MaterialPageRoute(builder: (c)=> SignUpScreen()));
+                  Navigator.push(context, MaterialPageRoute(builder: (c)=> const SignUpScreen()));
                 },
               ),
 

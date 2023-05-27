@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:drivers_app/authentication/login_screen.dart';
-import 'package:drivers_app/authentication/signup_screen.dart';
 import 'package:drivers_app/global/global.dart';
 import 'package:drivers_app/mainScreens/main_screen.dart';
 import 'package:flutter/material.dart';
@@ -24,11 +23,11 @@ class _MySplashScreenState extends State<MySplashScreen>
       {
 
         currentFirebaseUser = fAuth.currentUser;
-         Navigator.push(context, MaterialPageRoute(builder: (c)=> MainScreen()));
+         Navigator.push(context, MaterialPageRoute(builder: (c)=> const MainScreen()));
       }
       else
       {
-         Navigator.push(context, MaterialPageRoute(builder: (c)=> LoginScreen()));
+         Navigator.push(context, MaterialPageRoute(builder: (c)=> const LoginScreen()));
       }
     });
 

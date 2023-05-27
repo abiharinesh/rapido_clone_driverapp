@@ -14,7 +14,7 @@ class NotificationDialogBox extends StatefulWidget
 {
   UserRideRequestInformation? userRideRequestDetails;
 
-  NotificationDialogBox({this.userRideRequestDetails});
+  NotificationDialogBox({super.key, this.userRideRequestDetails});
 
   @override
   State<NotificationDialogBox> createState() => _NotificationDialogBoxState();
@@ -86,13 +86,11 @@ class _NotificationDialogBoxState extends State<NotificationDialogBox>
                       ),
                       const SizedBox(width: 14,),
                       Expanded(
-                        child: Container(
-                          child: Text(
-                            widget.userRideRequestDetails!.originAddress!,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              color: Colors.grey,
-                            ),
+                        child: Text(
+                          widget.userRideRequestDetails!.originAddress!,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey,
                           ),
                         ),
                       ),
@@ -111,13 +109,11 @@ class _NotificationDialogBoxState extends State<NotificationDialogBox>
                       ),
                       const SizedBox(width: 14,),
                       Expanded(
-                        child: Container(
-                          child: Text(
-                            widget.userRideRequestDetails!.destinationAddress!,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              color: Colors.grey,
-                            ),
+                        child: Text(
+                          widget.userRideRequestDetails!.destinationAddress!,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            color: Colors.grey,
                           ),
                         ),
                       ),
@@ -141,7 +137,7 @@ class _NotificationDialogBoxState extends State<NotificationDialogBox>
                 children: [
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.red,
+                      backgroundColor: Colors.red,
                     ),
                     onPressed: ()
                     {
@@ -190,7 +186,7 @@ class _NotificationDialogBoxState extends State<NotificationDialogBox>
 
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.green,
+                      backgroundColor: Colors.green,
                     ),
                     onPressed: ()
                     {

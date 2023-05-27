@@ -39,9 +39,7 @@ class _HomeTabPageState extends State<HomeTabPage>
    LocationPermission? _locationPermission;
 
     //variables for drive online and offline
-    String statusText = "Now Offline";
-    Color buttonColor = Colors.grey;
-    bool isDriverActive = false;
+    
 
     //request location permission
   checkIfLocationPermissionAllowed() async
@@ -68,9 +66,8 @@ class _HomeTabPageState extends State<HomeTabPage>
        newGoogleMapController!.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
 
       String humanReadableAddress = await AssistantMethods.searchAddressForGeographicCoOrdinates(driverCurrentPosition!,context);
-       print("this is your address="+ humanReadableAddress);
 
-      
+      AssistantMethods.readDriverRatings(context);
   } 
 
     readCurrentDriverInformation() async
@@ -94,16 +91,15 @@ class _HomeTabPageState extends State<HomeTabPage>
 
          driverVehicleType = (snap.snapshot.value as Map)["car_details"]["type"];
 
-        print("Car Details :: ");
-        print(onlineDriverData.car_color);
-        print(onlineDriverData.car_model);
-        print(onlineDriverData.car_number);
       }
     });
     currentFirebaseUser = fAuth.currentUser;
     PushNotificationSystem pushNotificationSystem = PushNotificationSystem();
     pushNotificationSystem.initializeCloudMessaging(context);
     pushNotificationSystem.generateAndGetToken();
+
+     AssistantMethods.readDriverEarnings(context);
+
   }
 
 
