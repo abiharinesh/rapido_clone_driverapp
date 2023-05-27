@@ -52,7 +52,7 @@ class _MySplashScreenState extends State<MySplashScreen>
               Image.asset("images/logo.png"),
               //add size boxes if needed
               const Text(
-                "Rapido Clone App",
+                "RTR Captain",
                 style: TextStyle(
                   fontSize: 25,
                   color: Colors.black,
